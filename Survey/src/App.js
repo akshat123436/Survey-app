@@ -196,9 +196,16 @@ function App() {
   useEffect(() => {
     let i = 0;
     const initialState = givenData.questions.map((question) => {
-      console.log("called");
+      // console.log("called");
       i++;
       if (question.question_type === 1) {
+        dispatch(
+          inputSliceActions.input({
+            type: "ONE",
+            id: question.id,
+            value: "none",
+          })
+        );
         return (
           <TypeOne
             key={i}
@@ -208,6 +215,14 @@ function App() {
           ></TypeOne>
         );
       } else if (question.question_type === 2) {
+        // console.log(question);
+        dispatch(
+          inputSliceActions.input({
+            type: "TWO",
+            id: question.id,
+            value: "none",
+          })
+        );
         return (
           <TypeTwo
             key={i}

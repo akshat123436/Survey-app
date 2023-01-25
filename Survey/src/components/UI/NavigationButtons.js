@@ -4,7 +4,7 @@ function NavigationButtons(props) {
   const increase = () => {
     if (props.clickHandler) props.clickHandler();
     props.setCurrentQuestion((previous) => {
-      console.log(previous);
+      // console.log(previous);
       return (previous + 1) % (props.numberOfQuestion + 1);
     });
   };
