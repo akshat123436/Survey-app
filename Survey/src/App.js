@@ -198,7 +198,7 @@ function App() {
     } else if (question.question_type === 4) {
       return <TypeFour question={question}></TypeFour>;
     }
-    return <TypeFive data={question}></TypeFive>;
+    return <TypeFive question={question}></TypeFive>;
   });
   const numberOfQuestion = givenData.questions.length;
   const [currentQuestion, setCurrentQuestion] = useState(1);
