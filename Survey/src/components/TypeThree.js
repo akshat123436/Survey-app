@@ -1,6 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
+import NavigationButtons from "./UI/NavigationButtons.js";
 
 function TypeThree(props) {
+  const inputRef = useRef();
   const choices = props.question.choices.map((choice) => (
     <Fragment key={choice.id}>
       <input
@@ -15,7 +17,11 @@ function TypeThree(props) {
   return (
     <Fragment>
       <h2>{props.question.question_text}</h2>
-      {choices}
+      <form ref={inputRef}>{choices}</form>
+      <NavigationButtons
+        setCurrentQuestion={props.setCurrentQuestion}
+        numberOfQuestion={props.numberOfQuestion}
+      ></NavigationButtons>
     </Fragment>
   );
 }

@@ -1,15 +1,16 @@
 import "./App.css";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TypeOne from "./components/TypeOne.js";
 import TypeTwo from "./components/TypeTwo.js";
 import TypeThree from "./components/TypeThree.js";
 import TypeFour from "./components/TypeFour.js";
 import TypeFive from "./components/TypeFive.js";
-import NavigationButtons from "./components/UI/NavigationButtons.js";
 import Header from "./components/layout/Header.js";
 import QuestionContainer from "./components/question/QuestionContainer.js";
 import SubmitPage from "./components/submit/SubmitPage.js";
+import { useDispatch } from "react-redux";
+import inputSliceActions from "./store/slices/input";
 const givenData = {
   setting: {
     title: "Intern Application Form",
@@ -188,32 +189,80 @@ const givenData = {
 };
 
 function App() {
-  const questionText = givenData.questions.map((question) => {
-    if (question.question_type === 1) {
-      return <TypeOne question={question}></TypeOne>;
-    } else if (question.question_type === 2) {
-      return <TypeTwo question={question}></TypeTwo>;
-    } else if (question.question_type === 3) {
-      return <TypeThree question={question}></TypeThree>;
-    } else if (question.question_type === 4) {
-      return <TypeFour question={question}></TypeFour>;
-    }
-    return <TypeFive question={question}></TypeFive>;
-  });
-  const numberOfQuestion = givenData.questions.length;
+  const dispatch = useDispatch();
   const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [questionText, setquestionText] = useState([]);
+  const numberOfQuestion = givenData.questions.length;
+  useEffect(() => {
+    let i = 0;
+    const initialState = givenData.questions.map((question) => {
+      console.log("called");
+      i++;
+      if (question.question_type === 1) {
+        return (
+          <TypeOne
+            key={i}
+            question={question}
+            setCurrentQuestion={setCurrentQuestion}
+            numberOfQuestion={numberOfQuestion}
+          ></TypeOne>
+        );
+      } else if (question.question_type === 2) {
+        return (
+          <TypeTwo
+            key={i}
+            question={question}
+            setCurrentQuestion={setCurrentQuestion}
+            numberOfQuestion={numberOfQuestion}
+          ></TypeTwo>
+        );
+      } else if (question.question_type === 3) {
+        return (
+          <TypeThree
+            question={question}
+            key={i}
+            setCurrentQuestion={setCurrentQuestion}
+            numberOfQuestion={numberOfQuestion}
+          ></TypeThree>
+        );
+      } else if (question.question_type === 4) {
+        dispatch(
+          inputSliceActions.input({ type: "FOUR", id: question.id, value: "" })
+        );
+        return (
+          <TypeFour
+            key={i}
+            question={question}
+            setCurrentQuestion={setCurrentQuestion}
+            numberOfQuestion={numberOfQuestion}
+          ></TypeFour>
+        );
+      }
+      return (
+        <TypeFive
+          question={question}
+          key={i}
+          setCurrentQuestion={setCurrentQuestion}
+          numberOfQuestion={numberOfQuestion}
+        ></TypeFive>
+      );
+    });
+    setquestionText(initialState);
+  }, []);
+  // const RenderHelper = () => {
+  //   return questionText[currentQuestion];
+  // };
   return (
     <div className="App">
       <Header title={givenData.setting.title}></Header>
       {currentQuestion === numberOfQuestion ? (
-        <SubmitPage></SubmitPage>
+        <SubmitPage
+          setCurrentQuestion={setCurrentQuestion}
+          numberOfQuestion={numberOfQuestion}
+        ></SubmitPage>
       ) : (
         <QuestionContainer>{questionText[currentQuestion]}</QuestionContainer>
       )}
-      <NavigationButtons
-        setCurrentQuestion={setCurrentQuestion}
-        numberOfQuestion={numberOfQuestion}
-      ></NavigationButtons>
     </div>
   );
 }
