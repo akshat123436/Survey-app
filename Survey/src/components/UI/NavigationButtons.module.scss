@@ -1,0 +1,25 @@
+.container {
+  margin-top: 10px;
+  text-align: center;
+  button {
+    padding: 15px;
+    border: none;
+    background-color: skyblue;
+    margin: 1px;
+    width: 25%;
+    border-radius: 5px;
+    font: inherit;
+    font-size: inherit;
+    font-size: 13px;
+    color: white;
+    transition: 0.5s;
+    &:hover {
+      background-color: darkcyan;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      width: 35%;
+      padding: 10px;
+    }
+  }
+}

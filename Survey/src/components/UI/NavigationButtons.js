@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
+import styles from "./NavigationButtons.module.css";
 function NavigationButtons(props) {
   const submitted = useSelector((state) => state.submit.submitted);
   const increase = () => {
@@ -21,9 +22,9 @@ function NavigationButtons(props) {
       {submitted ? (
         <Fragment></Fragment>
       ) : (
-        <div>
+        <div className={styles.container}>
           <button onClick={decrease}>PREVIOUS</button>
-          {<button onClick={increase}>NEXT</button>}
+          <button onClick={increase}>NEXT</button>
         </div>
       )}
     </Fragment>
