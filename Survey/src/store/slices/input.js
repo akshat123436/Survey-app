@@ -49,6 +49,7 @@ const inputSlice = createSlice({
         case "THREE":
           state.typeThree[action.payload.id][action.payload.value] =
             !state.typeThree[action.payload.id][action.payload.value];
+          break;
         case "FIVE":
           return {
             ...state,

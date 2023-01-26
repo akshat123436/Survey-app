@@ -193,12 +193,16 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [questionText, setquestionText] = useState([]);
   const numberOfQuestion = givenData.questions.length;
+  let isFirst = true;
+
   useEffect(() => {
     let i = 0;
+    let count = 1;
     const initialState = givenData.questions.map((question) => {
       // console.log("called");
       i++;
       if (question.question_type === 1) {
+        if (count > 1) isFirst = false;
         dispatch(
           inputSliceActions.input({
             type: "ONE",
@@ -206,8 +210,10 @@ function App() {
             value: "none",
           })
         );
+        count++;
         return (
           <TypeOne
+            isFirst={isFirst}
             key={i}
             question={question}
             setCurrentQuestion={setCurrentQuestion}

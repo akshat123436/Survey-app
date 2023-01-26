@@ -7,9 +7,6 @@ function TypeFive(props) {
   // const [input, setInput] = useState([]);
   const input = useSelector((state) => state.input.typeFive);
   const { filename, url } = input[props.question.id];
-  const clickHandler = () => {
-    // console.log(input[props.question.id].value);
-  };
   // console.log("key", key);
   return (
     <Fragment>
@@ -60,7 +57,6 @@ function TypeFive(props) {
           <NavigationButtons
             setCurrentQuestion={props.setCurrentQuestion}
             numberOfQuestion={props.numberOfQuestion}
-            clickHandler={clickHandler}
           ></NavigationButtons>
         </Fragment>
       ) : (
