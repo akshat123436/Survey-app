@@ -39,6 +39,7 @@ function TypeOne(props) {
       });
     }
   };
+  // console.log(props.isFirst);
   return (
     <Fragment>
       <h2>{props.question.question_text}</h2>

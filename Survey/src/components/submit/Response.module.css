@@ -1,0 +1,20 @@
+.div {
+  /* cursor: disable; */
+  position: absolute;
+  z-index: 12;
+  height: 100%;
+}
+
+.cell {
+  display: table-cell;
+}
+
+.container {
+  /* display: table;
+  width: 100%; */
+  display: flex;
+}
+
+.parent {
+  display: table-row;
+}

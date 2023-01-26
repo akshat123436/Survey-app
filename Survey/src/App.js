@@ -1,6 +1,6 @@
 import "./App.css";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import TypeOne from "./components/TypeOne.js";
 import TypeTwo from "./components/TypeTwo.js";
 import TypeThree from "./components/TypeThree.js";
@@ -9,7 +9,8 @@ import TypeFive from "./components/TypeFive.js";
 import Header from "./components/layout/Header.js";
 import QuestionContainer from "./components/question/QuestionContainer.js";
 import SubmitPage from "./components/submit/SubmitPage.js";
-import { useDispatch } from "react-redux";
+import Responses from "./components/submit/Responses.js";
+import { useDispatch, useSelector } from "react-redux";
 import inputSliceActions from "./store/slices/input";
 const givenData = {
   setting: {
@@ -194,12 +195,11 @@ function App() {
   const [questionText, setquestionText] = useState([]);
   const numberOfQuestion = givenData.questions.length;
   let isFirst = true;
-
+  const { loading, submitted } = useSelector((state) => state.submit);
   useEffect(() => {
     let i = 0;
     let count = 1;
     const initialState = givenData.questions.map((question) => {
-      // console.log("called");
       i++;
       if (question.question_type === 1) {
         if (count > 1) isFirst = false;
@@ -211,6 +211,7 @@ function App() {
           })
         );
         count++;
+        console.log(isFirst);
         return (
           <TypeOne
             isFirst={isFirst}
@@ -221,7 +222,6 @@ function App() {
           ></TypeOne>
         );
       } else if (question.question_type === 2) {
-        // console.log(question);
         dispatch(
           inputSliceActions.input({
             type: "TWO",
@@ -281,19 +281,30 @@ function App() {
     });
     setquestionText(initialState);
   }, []);
-  // const RenderHelper = () => {
-  //   return questionText[currentQuestion];
-  // };
   return (
     <div className="App">
-      <Header title={givenData.setting.title}></Header>
-      {currentQuestion === numberOfQuestion ? (
-        <SubmitPage
-          setCurrentQuestion={setCurrentQuestion}
-          numberOfQuestion={numberOfQuestion}
-        ></SubmitPage>
+      {loading ? (
+        <p> loading</p>
       ) : (
-        <QuestionContainer>{questionText[currentQuestion]}</QuestionContainer>
+        <Fragment>
+          {submitted ? (
+            <Responses questions={questionText}></Responses>
+          ) : (
+            <Fragment>
+              <Header title={givenData.setting.title}></Header>
+              {currentQuestion === numberOfQuestion ? (
+                <SubmitPage
+                  setCurrentQuestion={setCurrentQuestion}
+                  numberOfQuestion={numberOfQuestion}
+                ></SubmitPage>
+              ) : (
+                <QuestionContainer>
+                  {questionText[currentQuestion]}
+                </QuestionContainer>
+              )}
+            </Fragment>
+          )}
+        </Fragment>
       )}
     </div>
   );

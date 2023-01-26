@@ -1,6 +1,7 @@
-import React from "react";
-
+import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 function NavigationButtons(props) {
+  const submitted = useSelector((state) => state.submit.submitted);
   const increase = () => {
     if (props.clickHandler) props.clickHandler();
     else
@@ -16,10 +17,16 @@ function NavigationButtons(props) {
     });
   };
   return (
-    <div>
-      <button onClick={decrease}>PREVIOUS</button>
-      {<button onClick={increase}>NEXT</button>}
-    </div>
+    <Fragment>
+      {submitted ? (
+        <Fragment></Fragment>
+      ) : (
+        <div>
+          <button onClick={decrease}>PREVIOUS</button>
+          {<button onClick={increase}>NEXT</button>}
+        </div>
+      )}
+    </Fragment>
   );
 }
 

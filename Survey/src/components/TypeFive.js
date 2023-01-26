@@ -38,7 +38,7 @@ function TypeFive(props) {
             className={"input"}
             hidden
             onChange={(e) => {
-              console.log(e.target.files);
+              // console.log(e.target.files);
               dispatch(
                 inputSliceAction.input({
                   type: "FIVE",
