@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavigationButtons from "./UI/NavigationButtons.js";
 import inputSliceActions from "../store/slices/input";
+import styles from "./TypeFour.module.css";
 function TypeFour(props) {
   const dispatch = useDispatch();
   const input = useSelector((state) => {
@@ -18,9 +19,11 @@ function TypeFour(props) {
     );
   };
   return (
-    <Fragment>
-      <h2>{props.question.question_text}</h2>
+    <div className={styles.wrapper}>
+      <h2 className={styles.h2}>{props.question.question_text}</h2>
       <input
+        placeholder="Write here..."
+        className={styles.input}
         onChange={onChangeHandler}
         type="text"
         name={props.question.id}
@@ -30,7 +33,7 @@ function TypeFour(props) {
         setCurrentQuestion={props.setCurrentQuestion}
         numberOfQuestion={props.numberOfQuestion}
       ></NavigationButtons>
-    </Fragment>
+    </div>
   );
 }
 

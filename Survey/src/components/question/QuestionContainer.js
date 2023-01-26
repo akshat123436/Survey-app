@@ -1,7 +1,7 @@
 import React from "react";
-
+import styles from "./QuestionContainer.module.css";
 function QuestionContainer(props) {
-  return <div>{props.children}</div>;
+  return <div className={styles.container}>{props.children}</div>;
 }
 
 export default QuestionContainer;

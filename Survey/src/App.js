@@ -292,7 +292,6 @@ function App() {
             <Responses questions={questionText}></Responses>
           ) : (
             <Fragment>
-              <Header title={givenData.setting.title}></Header>
               {currentQuestion === numberOfQuestion ? (
                 <SubmitPage
                   setCurrentQuestion={setCurrentQuestion}

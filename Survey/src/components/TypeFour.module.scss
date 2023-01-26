@@ -1,0 +1,23 @@
+.h2 {
+  text-align: center;
+  border-bottom: 2px solid grey;
+  padding: 10px;
+  @media (max-width: 900px) {
+    padding: 2px;
+  }
+}
+.input {
+  width: 80%;
+  display: block;
+  margin: auto;
+  height: 40px;
+  padding: 0px 10px;
+  border-color: skyblue;
+  box-shadow: 1px 1px 4px aquamarine;
+}
+.wrapper {
+  margin-bottom: 20px;
+  @media (max-width: 900px) {
+    margin-bottom: 10px;
+  }
+}
