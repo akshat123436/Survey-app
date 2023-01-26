@@ -2,6 +2,7 @@ import React, { Fragment, useRef } from "react";
 import NavigationButtons from "./UI/NavigationButtons.js";
 import inputSliceAction from "../store/slices/input";
 import { useSelector, useDispatch } from "react-redux";
+import styles from "./TypeTwo.module.css";
 function TypeTwo(props) {
   const dispatch = useDispatch();
   const input = useSelector((state) => state.input.typeTwo);
@@ -16,9 +17,9 @@ function TypeTwo(props) {
   });
   return (
     <Fragment>
-      <h2>{props.question.question_text}</h2>
-      <label htmlFor={props.question.id}>{props.question.question_text}</label>
+      <h2 className={styles.h2}>{props.question.question_text}</h2>
       <select
+        className={styles.select}
         value={input[props.question.id].value}
         onChange={(e) => {
           dispatch(

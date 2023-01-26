@@ -2,10 +2,13 @@
   text-align: center;
   border-bottom: 2px solid grey;
   padding: 10px;
-  @media (max-width: 900px) {
+}
+@media (max-width: 900px) {
+  .h2 {
     padding: 2px;
   }
 }
+
 .select {
   display: block;
   width: 80%;
@@ -17,7 +20,7 @@
   color: white;
   border-radius: 5px;
   border: none;
-  &:hover {
-    background-color: darkcyan;
-  }
 }
+.select:hover {
+  background-color: darkcyan;
+}/*# sourceMappingURL=TypeTwo.module.css.map */
