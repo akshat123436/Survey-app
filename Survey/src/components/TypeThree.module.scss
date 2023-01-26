@@ -1,0 +1,15 @@
+.label {
+  display: block;
+}
+.input {
+  margin: 10px;
+}
+
+.h2 {
+  text-align: center;
+  border-bottom: 2px solid grey;
+  padding: 10px;
+  @media (max-width: 900px) {
+    padding: 2px;
+  }
+}
