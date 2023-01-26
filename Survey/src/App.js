@@ -191,12 +191,13 @@ const givenData = {
 
 function App() {
   const dispatch = useDispatch();
-  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questionText, setquestionText] = useState([]);
   const numberOfQuestion = givenData.questions.length;
   let isFirst = true;
   const { loading, submitted } = useSelector((state) => state.submit);
   useEffect(() => {
+    console.log("app use effect");
     let i = 0;
     let count = 1;
     const initialState = givenData.questions.map((question) => {
