@@ -1,0 +1,60 @@
+.h2 {
+  text-align: center;
+  border-bottom: 2px solid grey;
+  padding: 10px;
+}
+@media (max-width: 900px) {
+  .h2 {
+    padding: 2px;
+  }
+}
+
+.input {
+  border: 2px dotted skyblue;
+  border-radius: 5px;
+  text-align: center;
+  padding: 40px;
+  width: 75%;
+  margin: 30px auto;
+  margin-bottom: 8px;
+  transition: 0.5s;
+}
+.input:hover {
+  background-color: skyblue;
+  color: white;
+  border-color: 2px solid white;
+  cursor: pointer;
+}
+@media (max-width: 900px) {
+  .input {
+    width: 90%;
+    padding: 40px 0px;
+    margin: 20px auto;
+    margin-bottom: 8px;
+  }
+}
+
+.removeButton {
+  padding: 15px;
+  border: none;
+  background-color: skyblue;
+  width: 25%;
+  display: block;
+  margin: auto;
+  border-radius: 5px;
+  font: inherit;
+  font-size: inherit;
+  font-size: 13px;
+  color: white;
+  transition: 0.5s;
+}
+.removeButton:hover {
+  background-color: darkcyan;
+  cursor: pointer;
+}
+@media (max-width: 900px) {
+  .removeButton {
+    width: 35%;
+    padding: 10px;
+  }
+}/*# sourceMappingURL=TypeFive.module.css.map */
