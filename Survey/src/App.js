@@ -8,6 +8,7 @@ import TypeFour from "./components/TypeFour.js";
 import TypeFive from "./components/TypeFive.js";
 import Header from "./components/layout/Header.js";
 import QuestionContainer from "./components/question/QuestionContainer.js";
+import Loader from "./components/UI/Loader.js";
 import SubmitPage from "./components/submit/SubmitPage.js";
 import Responses from "./components/submit/Responses.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -285,7 +286,7 @@ function App() {
   return (
     <div className="App">
       {loading ? (
-        <p> loading</p>
+        <Loader></Loader>
       ) : (
         <Fragment>
           {submitted ? (
