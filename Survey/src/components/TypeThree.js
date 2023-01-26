@@ -1,7 +1,10 @@
 import React, { Fragment, useRef } from "react";
 import NavigationButtons from "./UI/NavigationButtons.js";
-
+import { useSelector, useDispatch } from "react-redux";
+import inputSliceAction from "../store/slices/input";
 function TypeThree(props) {
+  const dispatch = useDispatch();
+  const input = useSelector((state) => state.input.typeThree);
   const inputRef = useRef();
   const choices = props.question.choices.map((choice) => (
     <Fragment key={choice.id}>
@@ -10,6 +13,16 @@ function TypeThree(props) {
         value={choice.id}
         id={choice.id}
         name={props.question.id}
+        onChange={(e) => {
+          dispatch(
+            inputSliceAction.input({
+              type: "THREE",
+              id: props.question.id,
+              value: choice.id,
+            })
+          );
+        }}
+        defaultChecked={input[props.question.id][choice.id] ? true : false}
       ></input>
       <label htmlFor={choice.id}>{choice.choice_text}</label>
     </Fragment>

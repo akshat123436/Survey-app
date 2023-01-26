@@ -232,6 +232,13 @@ function App() {
           ></TypeTwo>
         );
       } else if (question.question_type === 3) {
+        dispatch(
+          inputSliceActions.input({
+            type: "THREE_INITIAL",
+            id: question.id,
+            choices: question.choices,
+          })
+        );
         return (
           <TypeThree
             question={question}
