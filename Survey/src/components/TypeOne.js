@@ -8,6 +8,7 @@ function TypeOne(props) {
   const [goToEnd, setGoToEnd] = useState(false);
   const dispatch = useDispatch();
   const input = useSelector((state) => state.input.typeOne);
+  const isSubmitted = useSelector((state) => state.submit.submitted);
   const choices = props.question.choices.map((choice) => (
     <label className={styles.label} key={choice.id}>
       <input
@@ -45,7 +46,7 @@ function TypeOne(props) {
   return (
     <Fragment>
       <h2 className={styles.h2}>{props.question.question_text}</h2>
-      {props.isFirst && (
+      {props.isFirst && !isSubmitted && (
         <label className={styles.label}>
           <input
             className={styles.input}

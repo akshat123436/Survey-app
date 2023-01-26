@@ -2,24 +2,18 @@
   width: 55%;
   margin: auto;
   margin-top: 50px;
-}
-@media (max-width: 900px) {
-  .container {
+  @media (max-width: 900px) {
     margin-top: 20px;
     width: 100%;
   }
 }
-
 .h2 {
   color: skyblue;
   text-align: center;
-}
-@media (max-width: 900px) {
-  .h2 {
+  @media (max-width: 900px) {
     font-size: 15px;
   }
 }
-
 .button {
   text-decoration: none;
   text-align: center;
@@ -35,29 +29,23 @@
   font-size: 13px;
   color: white;
   transition: 0.5s;
-}
-.button:hover {
-  background-color: darkcyan;
-  cursor: pointer;
-}
-@media (max-width: 900px) {
-  .button {
+  &:hover {
+    background-color: darkcyan;
+    cursor: pointer;
+  }
+  @media (max-width: 900px) {
     font-size: 10px;
     width: 50%;
     padding: 10px;
   }
 }
-
 .h1 {
   text-align: center;
   margin-bottom: -50px;
-}
-@media (max-width: 900px) {
-  .h1 {
+  @media (max-width: 900px) {
     margin-bottom: -10px;
   }
 }
-
 .container {
   pointer-events: none;
-}/*# sourceMappingURL=Response.module.css.map */
+}
