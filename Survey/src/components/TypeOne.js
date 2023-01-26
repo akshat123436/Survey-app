@@ -3,13 +3,15 @@ import NavigationButtons from "./UI/NavigationButtons.js";
 import { useSelector } from "react-redux";
 import inputSliceAction from "../store/slices/input";
 import { useDispatch } from "react-redux";
+import styles from "./TypeOne.module.css";
 function TypeOne(props) {
   const [goToEnd, setGoToEnd] = useState(false);
   const dispatch = useDispatch();
   const input = useSelector((state) => state.input.typeOne);
   const choices = props.question.choices.map((choice) => (
-    <label key={choice.id}>
+    <label className={styles.label} key={choice.id}>
       <input
+        className={styles.input}
         type="radio"
         name={props.question.id}
         value={choice.id}
@@ -42,10 +44,11 @@ function TypeOne(props) {
   // console.log(props.isFirst);
   return (
     <Fragment>
-      <h2>{props.question.question_text}</h2>
+      <h2 className={styles.h2}>{props.question.question_text}</h2>
       {props.isFirst && (
-        <label>
+        <label className={styles.label}>
           <input
+            className={styles.input}
             type="checkbox"
             onChange={(e) => {
               setGoToEnd(true);

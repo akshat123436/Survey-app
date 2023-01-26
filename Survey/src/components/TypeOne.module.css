@@ -2,7 +2,9 @@
   text-align: center;
   border-bottom: 2px solid grey;
   padding: 10px;
-  @media (max-width: 900px) {
+}
+@media (max-width: 900px) {
+  .h2 {
     padding: 2px;
   }
 }
@@ -13,4 +15,4 @@
 
 .input {
   margin: 10px;
-}
+}/*# sourceMappingURL=TypeOne.module.css.map */
