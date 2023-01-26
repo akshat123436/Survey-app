@@ -20,21 +20,23 @@ function TypeFive(props) {
             <h3> File Name : {filename ? filename : "ADD a file"}</h3>
             <h4> File Path : {url ? url : "URL not found"}</h4>
           </div>
-          <button
-            onClick={() => {
-              dispatch(
-                inputSliceAction.input({
-                  type: "FIVE",
-                  id: props.question.id,
-                  filename: null,
-                  url: null,
-                })
-              );
-            }}
-          >
-            {" "}
-            REMOVE{" "}
-          </button>
+          {filename && (
+            <button
+              onClick={() => {
+                dispatch(
+                  inputSliceAction.input({
+                    type: "FIVE",
+                    id: props.question.id,
+                    filename: null,
+                    url: null,
+                  })
+                );
+              }}
+            >
+              {" "}
+              REMOVE{" "}
+            </button>
+          )}
           <input
             className={"input"}
             hidden
