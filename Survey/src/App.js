@@ -260,6 +260,10 @@ function App() {
           ></TypeFour>
         );
       }
+      dispatch(
+        inputSliceActions.input({ type: "FIVE", id: question.id, value: "" })
+      );
+
       return (
         <TypeFive
           question={question}

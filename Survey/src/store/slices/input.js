@@ -36,7 +36,7 @@ const inputSlice = createSlice({
         case "THREE_INITIAL":
           const obj = {};
           for (let choice of action.payload.choices) {
-            console.log(choice);
+            // console.log(choice);
             obj[choice.id] = false;
           }
           return {
@@ -49,6 +49,17 @@ const inputSlice = createSlice({
         case "THREE":
           state.typeThree[action.payload.id][action.payload.value] =
             !state.typeThree[action.payload.id][action.payload.value];
+        case "FIVE":
+          return {
+            ...state,
+            typeFive: {
+              ...state.typeFive,
+              [action.payload.id]: {
+                filename: action.payload.filename,
+                url: action.payload.url,
+              },
+            },
+          };
         //   state.typeFour[action.payload.id].value = action.payload.value;
       }
     },
