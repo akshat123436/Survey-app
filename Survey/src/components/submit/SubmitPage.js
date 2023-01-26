@@ -1,6 +1,8 @@
 import React from "react";
 import NavigationButtons from "../UI/NavigationButtons";
 import submitAction from "../../store/slices/submit.js";
+import styles from "./SubmitPage.module.css";
+import QestionContainer from "../question/QuestionContainer";
 import { useDispatch } from "react-redux";
 function SubmitPage(props) {
   const dispatch = useDispatch();
@@ -17,11 +19,15 @@ function SubmitPage(props) {
     props.setCurrentQuestion((previousState) => previousState - 1);
   };
   return (
-    <div>
-      SubmitPage
-      <button onClick={onClickHandler}>SUBMIT</button>
-      <button onClick={previous}>GO BACK</button>
-    </div>
+    <QestionContainer>
+      <h4 className={styles.h4}>DO YOU WANT TO SUBMIT THE FORM ?</h4>
+      <button className={styles.button} onClick={onClickHandler}>
+        SUBMIT
+      </button>
+      <button className={styles.button} onClick={previous}>
+        GO BACK
+      </button>
+    </QestionContainer>
   );
 }
 
