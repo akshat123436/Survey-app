@@ -19,7 +19,6 @@ function TypeOne(props) {
         name={props.question.id}
         value={choice.id}
         onChange={(e) => {
-          setGoToEnd(false);
           dispatch(
             inputSliceAction.input({
               type: "ONE",
@@ -59,7 +58,9 @@ function TypeOne(props) {
             className={styles.input}
             type="checkbox"
             onChange={(e) => {
-              setGoToEnd(true);
+              setGoToEnd((previous) => {
+                return !previous;
+              });
             }}
           ></input>
           Go to Submission Page

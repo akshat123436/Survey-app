@@ -115,7 +115,7 @@ function App() {
   }, []);
   const options = {
     position: positions.BOTTOM_CENTER,
-    timeout: 2000,
+    timeout: 700,
     offset: "30px",
     transition: transitions.SCALE,
     onOpen: () => {
