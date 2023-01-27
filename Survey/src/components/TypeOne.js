@@ -72,6 +72,7 @@ function TypeOne(props) {
         numberOfQuestion={props.numberOfQuestion}
         clickHandler={clickHandler}
       ></NavigationButtons>
+      {props.question.required === 1 ? <h6>REQUIRED</h6> : ""}
     </Fragment>
   );
 }

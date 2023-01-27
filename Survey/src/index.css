@@ -3,7 +3,10 @@
 * {
   box-sizing: border-box;
 }
-
+h6 {
+  text-align: center;
+  color: red;
+}
 html {
   height: 100%;
   font-family: "Open Sans", sans-serif;
