@@ -34,7 +34,7 @@ function TypeTwo(props) {
         name={props.question.id}
         ref={inputRef}
       >
-        <option value="none" selected disabled hidden>
+        <option value="" selected disabled hidden>
           Select Any Option
         </option>
         {options}
