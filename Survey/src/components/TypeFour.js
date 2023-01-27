@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavigationButtons from "./UI/NavigationButtons.js";
 import inputSliceActions from "../store/slices/input";

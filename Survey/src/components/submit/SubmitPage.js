@@ -1,5 +1,4 @@
 import React from "react";
-import NavigationButtons from "../UI/NavigationButtons";
 import submitAction from "../../store/slices/submit.js";
 import styles from "./SubmitPage.module.css";
 import QestionContainer from "../question/QuestionContainer";
@@ -15,11 +14,6 @@ function SubmitPage(props) {
   });
   const inputFive = useSelector((state) => state.input.typeFive);
   const onClickHandler = () => {
-    dispatch(submitAction.loader({ type: "START" }));
-    //some task
-    const temp = setTimeout(() => {
-      dispatch(submitAction.loader({ type: "END" }));
-    }, 1000);
     for (let i in givenData.questions) {
       i = parseInt(i);
       console.log(givenData.questions[i]);
@@ -72,7 +66,6 @@ function SubmitPage(props) {
       }
     }
     dispatch(submitAction.submit());
-
     // dispatch(submitAction.loader({ type: "END" }));
   };
   const previous = () => {

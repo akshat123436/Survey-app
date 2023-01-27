@@ -9,18 +9,22 @@ import TypeFive from "./components/TypeFive.js";
 import QuestionContainer from "./components/question/QuestionContainer.js";
 import Loader from "./components/UI/Loader.js";
 import SubmitPage from "./components/submit/SubmitPage.js";
+import { transitions, positions } from "react-alert";
 import Responses from "./components/submit/Responses.js";
 import { useDispatch, useSelector } from "react-redux";
 import inputSliceActions from "./store/slices/input";
+import submitSliceAction from "./store/slices/submit";
 import givenData from "./data";
-
+import { useAlert } from "react-alert";
 function App() {
+  const showAlert = useAlert();
   const dispatch = useDispatch();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questionText, setquestionText] = useState([]);
   const numberOfQuestion = givenData.questions.length;
   let isFirst = true;
-  const { loading, submitted } = useSelector((state) => state.submit);
+  const { loading, submitted, alert } = useSelector((state) => state.submit);
+  const state = useSelector((state) => state);
   useEffect(() => {
     let i = 0;
     let count = 1;
@@ -109,6 +113,25 @@ function App() {
     });
     setquestionText(initialState);
   }, []);
+  const options = {
+    position: positions.BOTTOM_CENTER,
+    timeout: 2000,
+    offset: "30px",
+    transition: transitions.SCALE,
+    onOpen: () => {
+      console.log(state);
+    },
+    onClose: () => {
+      console.log("closed");
+      dispatch(submitSliceAction.alert({ type: "END" }));
+    },
+  };
+  const alertMessage = () => {
+    showAlert.error("This field is compoulsary", { ...options });
+  };
+
+  alert && alertMessage();
+
   return (
     <div className="App">
       {loading ? (

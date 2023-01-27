@@ -17,6 +17,8 @@ const submit = createSlice({
             ...state,
             loading: false,
           };
+        default:
+          return state;
       }
     },
     submit(state) {
@@ -30,6 +32,8 @@ const submit = createSlice({
         case "END":
           state.alert = false;
           break;
+        default:
+          return state;
       }
     },
   },
