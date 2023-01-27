@@ -1,6 +1,7 @@
 import React, { Fragment, useRef } from "react";
 import NavigationButtons from "./UI/NavigationButtons.js";
 import inputSliceAction from "../store/slices/input";
+import submitSliceAction from "../store/slices/submit";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./TypeTwo.module.css";
 function TypeTwo(props) {
@@ -15,6 +16,17 @@ function TypeTwo(props) {
       </option>
     );
   });
+  const clickHandler = () => {
+    if (props.question.required) {
+      if (!input[props.question.id].value) {
+        dispatch(submitSliceAction.alert({ type: "START" }));
+        return;
+      }
+    }
+    props.setCurrentQuestion((previous) => {
+      return (previous + 1) % (props.numberOfQuestion + 1);
+    });
+  };
   return (
     <Fragment>
       <h2 className={styles.h2}>{props.question.question_text}</h2>
@@ -42,6 +54,7 @@ function TypeTwo(props) {
       <NavigationButtons
         setCurrentQuestion={props.setCurrentQuestion}
         numberOfQuestion={props.numberOfQuestion}
+        clickHandler={clickHandler}
       ></NavigationButtons>
     </Fragment>
   );

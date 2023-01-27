@@ -22,7 +22,6 @@ function App() {
   let isFirst = true;
   const { loading, submitted } = useSelector((state) => state.submit);
   useEffect(() => {
-    console.log("app use effect");
     let i = 0;
     let count = 1;
     const initialState = givenData.questions.map((question) => {
@@ -37,7 +36,6 @@ function App() {
           })
         );
         count++;
-        console.log(isFirst);
         return (
           <TypeOne
             isFirst={isFirst}

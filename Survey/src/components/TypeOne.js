@@ -2,8 +2,10 @@ import React, { Fragment, useState } from "react";
 import NavigationButtons from "./UI/NavigationButtons.js";
 import { useSelector } from "react-redux";
 import inputSliceAction from "../store/slices/input";
+import submitSliceAction from "../store/slices/submit";
 import { useDispatch } from "react-redux";
 import styles from "./TypeOne.module.css";
+
 function TypeOne(props) {
   const [goToEnd, setGoToEnd] = useState(false);
   const dispatch = useDispatch();
@@ -34,6 +36,12 @@ function TypeOne(props) {
     </label>
   ));
   const clickHandler = () => {
+    if (props.question.required) {
+      if (!input[props.question.id].value) {
+        dispatch(submitSliceAction.alert({ type: "START" }));
+        return;
+      }
+    }
     if (goToEnd) {
       props.setCurrentQuestion(props.numberOfQuestion);
     } else {
@@ -42,7 +50,6 @@ function TypeOne(props) {
       });
     }
   };
-  // console.log(props.isFirst);
   return (
     <Fragment>
       <h2 className={styles.h2}>{props.question.question_text}</h2>

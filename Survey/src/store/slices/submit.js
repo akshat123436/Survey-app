@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const submit = createSlice({
   name: "submit",
-  initialState: { loading: false, submitted: false },
+  initialState: { loading: false, submitted: false, alert: false },
   reducers: {
     loader(state, action) {
       //   console.log(action.payload.type);
@@ -21,6 +21,16 @@ const submit = createSlice({
     },
     submit(state) {
       state.submitted = true;
+    },
+    alert(state, action) {
+      switch (action.payload.type) {
+        case "START":
+          state.alert = true;
+          break;
+        case "END":
+          state.alert = false;
+          break;
+      }
     },
   },
 });
