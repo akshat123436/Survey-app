@@ -2,11 +2,11 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavigationButtons from "./UI/NavigationButtons.js";
 import inputSliceActions from "../store/slices/input";
+import submitSliceAction from "../store/slices/submit";
 import styles from "./TypeFour.module.css";
 function TypeFour(props) {
   const dispatch = useDispatch();
   const input = useSelector((state) => {
-    // console.log(state.input);
     return state.input.typeFour[props.question.id].value;
   });
   const onChangeHandler = (e) => {
@@ -17,6 +17,17 @@ function TypeFour(props) {
         value: e.target.value,
       })
     );
+  };
+  const clickHandler = () => {
+    if (props.question.required) {
+      if (!input) {
+        dispatch(submitSliceAction.alert({ type: "START" }));
+        return;
+      }
+    }
+    props.setCurrentQuestion((previous) => {
+      return (previous + 1) % (props.numberOfQuestion + 1);
+    });
   };
   return (
     <div className={styles.wrapper}>
@@ -32,6 +43,7 @@ function TypeFour(props) {
       <NavigationButtons
         setCurrentQuestion={props.setCurrentQuestion}
         numberOfQuestion={props.numberOfQuestion}
+        clickHandler={clickHandler}
       ></NavigationButtons>
     </div>
   );
