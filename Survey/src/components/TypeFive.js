@@ -1,13 +1,25 @@
 import React, { Fragment, useEffect, useState } from "react";
 import inputSliceAction from "../store/slices/input";
+import submitSliceAction from "../store/slices/submit";
 import { useSelector, useDispatch } from "react-redux";
 import NavigationButtons from "./UI/NavigationButtons.js";
 import styles from "./TypeFive.module.css";
 function TypeFive(props) {
   const dispatch = useDispatch();
   const input = useSelector((state) => state.input.typeFive);
-  const { filename, url } = input[props.question.id];
+  const { filename } = input[props.question.id];
   const isSubmitted = useSelector((state) => state.submit.submitted);
+  const clickHandler = () => {
+    if (props.question.required) {
+      if (!filename) {
+        dispatch(submitSliceAction.alert({ type: "START" }));
+        return;
+      }
+    }
+    props.setCurrentQuestion((previous) => {
+      return (previous + 1) % (props.numberOfQuestion + 1);
+    });
+  };
   return (
     <Fragment>
       <h2 className={styles.h2}>{props.question.question_text}</h2>
@@ -39,7 +51,6 @@ function TypeFive(props) {
         className={"input"}
         hidden
         onChange={(e) => {
-          // console.log(e.target.files);
           dispatch(
             inputSliceAction.input({
               type: "FIVE",
@@ -48,8 +59,6 @@ function TypeFive(props) {
               url: URL.createObjectURL(e.target.files[0]),
             })
           );
-          // setInput(e.target.files[0]);
-          // console.log(e.target.files[0]);
         }}
         type="file"
         accept=".jpg, .png, .jpeg, .pdf, .docx"
@@ -59,6 +68,7 @@ function TypeFive(props) {
       <NavigationButtons
         setCurrentQuestion={props.setCurrentQuestion}
         numberOfQuestion={props.numberOfQuestion}
+        clickHandler={clickHandler}
       ></NavigationButtons>
     </Fragment>
   );
