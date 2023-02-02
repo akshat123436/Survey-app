@@ -1,0 +1,27 @@
+.h4 {
+  text-align: center;
+  margin-top: 60px;
+}
+.button {
+  padding: 20px;
+  border: none;
+  background-color: skyblue;
+  width: 40%;
+  display: block;
+  margin: 10px auto;
+
+  border-radius: 5px;
+  font: inherit;
+  font-size: inherit;
+  font-size: 13px;
+  color: white;
+  transition: 0.5s;
+  &:hover {
+    background-color: darkcyan;
+    cursor: pointer;
+  }
+  @media (max-width: 900px) {
+    width: 50%;
+    padding: 15px;
+  }
+}

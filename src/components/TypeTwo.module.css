@@ -1,0 +1,45 @@
+@-webkit-keyframes slideInLeft {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slideInLeft {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.h2 {
+  -webkit-animation: 1s ease-out 0s 1 slideInLeft;
+          animation: 1s ease-out 0s 1 slideInLeft;
+  text-align: center;
+  border-bottom: 2px solid grey;
+  padding: 10px;
+}
+@media (max-width: 900px) {
+  .h2 {
+    padding: 2px;
+  }
+}
+
+.select {
+  display: block;
+  width: 80%;
+  text-align: center;
+  margin: 20px auto;
+  padding: 14px;
+  transition: 0.5s;
+  background-color: skyblue;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+.select:hover {
+  background-color: darkcyan;
+  cursor: pointer;
+}/*# sourceMappingURL=TypeTwo.module.css.map */

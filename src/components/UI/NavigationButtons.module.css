@@ -1,0 +1,27 @@
+.container {
+  margin-top: 10px;
+  text-align: center;
+}
+.container button {
+  padding: 15px;
+  border: none;
+  background-color: skyblue;
+  margin: 1px;
+  width: 25%;
+  border-radius: 5px;
+  font: inherit;
+  font-size: inherit;
+  font-size: 13px;
+  color: white;
+  transition: 0.5s;
+}
+.container button:hover {
+  background-color: darkcyan;
+  cursor: pointer;
+}
+@media (max-width: 900px) {
+  .container button {
+    width: 35%;
+    padding: 10px;
+  }
+}/*# sourceMappingURL=NavigationButtons.module.css.map */

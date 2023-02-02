@@ -1,0 +1,32 @@
+@keyframes slideInLeft {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.h2 {
+  animation: 1s ease-out 0s 1 slideInLeft;
+  text-align: center;
+  border-bottom: 2px solid grey;
+  padding: 10px;
+  @media (max-width: 900px) {
+    padding: 2px;
+  }
+}
+.input {
+  width: 80%;
+  display: block;
+  margin: auto;
+  height: 40px;
+  padding: 0px 10px;
+  border-color: skyblue;
+  box-shadow: 1px 1px 4px aquamarine;
+}
+.wrapper {
+  margin-bottom: 20px;
+  @media (max-width: 900px) {
+    margin-bottom: 10px;
+  }
+}
